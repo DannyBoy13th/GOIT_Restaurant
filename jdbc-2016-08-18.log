@@ -1,0 +1,8 @@
+16:50:41.125  INFO [main] Main - Loading JDBC Driver: 
+16:50:41.214  INFO [main] Main - Driver was successfully loaded.
+16:52:11.548  INFO [main] Main - Loading JDBC Driver: org.postgresql.Driver
+16:52:11.579  INFO [main] Main - Driver was successfully loaded.
+17:07:27.249  INFO [main] Main - Loading JDBC Driver: org.postgresql.Driver
+17:07:27.298  INFO [main] Main - Driver was successfully loaded.
+17:07:27.299  INFO [main] Main - Connecting to restaurant database.
+17:07:27.873  INFO [main] Main - Successfully connected to database.

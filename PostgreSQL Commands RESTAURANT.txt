@@ -1,0 +1,51 @@
+create table EMPLOYEE(
+       ID int primary key not null,
+       SURNAME varchar(40) not null,
+       NAME varchar(20) not null,
+       BIRTHDATE date not null,
+       TELEPHONE varchar(15),      
+       OCCUPATION varchar(20),
+       SALARY int
+
+);
+
+create table CUSTOMER_ORDER(
+       ORDER_ID int primary key not null,
+       EMPLOYEE int REFERENCES EMPLOYEE(ID),
+       LIST_OF_DISHES text not null,
+       TABLE_NUMBER int,
+       ORDER_DATE date
+
+);
+
+create table INGRIDIENT(
+      INGRIDIENT_ID int primary key not null,
+      NAME varchar(20)  
+);
+
+create table DISH(
+       DISH_ID int primary key not null,
+       NAME varchar(20) not null,
+       CATEGORY varchar(20) not null,
+       INGRIDIENTS int REFERENCES INGRIDIENT(INGRIDIENT_ID),
+       PRICE int not null,
+       WEIGHT int
+);
+
+create table PREAPARED_DISHES(
+       DISH_ID int REFERENCES DISH(DISH_ID),
+       COOK int REFERENCES EMPLOYEE(ID),
+       ORDER_ID int REFERENCES CUSTOMER_ORDER(ORDER_ID),
+       DATE_OF_PREPARATION date not null
+);
+
+create table MENU(
+       NAME varchar(20) not null,
+       LIST_OF_DISHES varchar  
+);
+
+create table WAREHOUSE(
+       STOCK_ID int primary key not null,
+       INGRIDEINT_ID int REFERENCES INGRIDIENT(INGRIDIENT_ID),
+       AMOUNT int not null 
+);
