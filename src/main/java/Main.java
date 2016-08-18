@@ -1,9 +1,7 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by Daniel Solo on 17.08.2016.
@@ -19,6 +17,23 @@ public class Main {
         String password = "130392";
         try {
             Connection connection = DriverManager.getConnection(URL,user,password);
+            Statement statement = connection.createStatement();{
+                String sql = "SELECT * FROM EMPLOYEE";
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+                    Employee employee = new Employee();
+                    employee.setId(resultSet.getInt("ID"));
+                    employee.setSurname(resultSet.getString("surname"));
+                    employee.setName(resultSet.getString("name"));
+                    employee.setBirthdate(resultSet.getDate("birthdate"));
+                    employee.setTelephone(resultSet.getString("telephone"));
+                    employee.setOccupation(resultSet.getString("occupation"));
+                    employee.setSalary(resultSet.getDouble("salary"));
+                    System.out.println(employee.toString());
+
+                }
+            }
             LOGGER.info("Successfully connected to database.");
         } catch (SQLException e) {
             LOGGER.error("Failed to connect");
